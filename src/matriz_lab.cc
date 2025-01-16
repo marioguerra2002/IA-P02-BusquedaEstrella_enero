@@ -53,17 +53,25 @@ void MatrizLab::A_estrella() {
   abiertos_.push(nodo_inicial);
   g_scores_[std::make_pair(x_inicio_, y_inicio_)] = 0; // Coste acumulado del nodo inicial
 
+
   while (!abiertos_.empty()) {
     Nodo nodo_actual = abiertos_.top();
     abiertos_.pop();
     std::pair<int, int> pos_actual = std::make_pair(nodo_actual.get_x(), nodo_actual.get_y()); // Posición actual del nodo
+
+    nodos_inspeccionados++;
     if (pos_actual.first == x_meta_ && pos_actual.second == y_meta_) {
       std::cout << "Nodo meta encontrado" << std::endl;
+      std::cout << "Nodos generados: " << nodos_generados << std::endl;
+      std::cout << "Nodos inspeccionados: " << nodos_inspeccionados << std::endl;
+      // coste total del camino
+      std::cout << "Coste total del camino: " << nodo_actual.get_g() << std::endl;
       return;
     }
     cerrados_.insert(pos_actual); // Añado el nodo actual a cerrados
     explorar_vecinos(nodo_actual, abiertos_, cerrados_, padres_, g_scores_);
   }
+  
 }
 
 void MatrizLab::explorar_vecinos(const Nodo& nodo_actual, std::priority_queue<Nodo, std::vector<Nodo>, NodoComparador>& abiertos_, std::set<std::pair<int, int> >& cerrados_, std::map<std::pair<int, int>, std::pair<int, int> >& padres_, std::map<std::pair<int, int>, int>& g_scores_) {
@@ -86,6 +94,7 @@ void MatrizLab::explorar_vecinos(const Nodo& nodo_actual, std::priority_queue<No
           Nodo vecino(nx, ny, x_meta_, y_meta_, tentative_g); // Creo el nodo vecino con el coste acumulado
           abiertos_.push(vecino); // Añado el vecino a abiertos con su coste acumulado
           padres_[vecino_pos] = std::make_pair(nodo_actual.get_x(), nodo_actual.get_y()); // Guardo el padre del vecino en el mapa de padres
+          nodos_generados++;
         }
       }
     }

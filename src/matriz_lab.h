@@ -48,5 +48,7 @@ class MatrizLab {
     std::map<std::pair<int, int>, int> g_scores_;
     // vector donde se guarda las posiciones del camino
     std::vector<std::pair<int, int> > camino_;
+    int nodos_generados = 0;
+    int nodos_inspeccionados = 0;
 
 };

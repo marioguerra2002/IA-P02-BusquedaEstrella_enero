@@ -5,7 +5,9 @@ Nodo::Nodo(int x, int y, int x_meta, int y_meta, int g) {
   y_ = y;
 
   // Calcular la heurística h(n)
-  int W = 3;  // Peso W
+  // int W = 3;  // Peso W
+  // heuristica modificada
+  int W = 1;
   h_ = (abs(x_meta - x) + abs(y_meta - y)) * W;
 
   // Coste acumulado g(n)

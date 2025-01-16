@@ -59,6 +59,7 @@ int main (int argc, char *argv[]) {
   for (int i = 0; i < filas; ++i) {
     matriz[i] = new int[columnas];
   }
+  std::cout << "filas: " << filas << " columnas: " << columnas << std::endl;
   
   for (int i = 0; i < filas; i++) {
     for (int j = 0; j < columnas; j++) {
