@@ -178,3 +178,31 @@ void MatrizLab::imprimir_lab_con_colores() {
     std::cout << std::endl;
   }
 }
+
+std::stringstream MatrizLab::volcar_camino_en_documento() {
+  std::stringstream ss;
+  guardar_camino();
+  for (int i = 0; i < filas_; i++) {
+    for (int j = 0; j < columnas_; j++) {
+      if (std::find(camino_.begin(), camino_.end(), std::make_pair(i, j)) != camino_.end()) {
+        if (i == x_inicio_ && j == y_inicio_) {
+          ss << "3 ";
+        } else if (i == x_meta_ && j == y_meta_) {
+          ss << "4 ";
+        } else {
+          ss << "* ";
+        }
+      } else {
+        ss << matriz_con_mapa_[i][j] << " ";
+      }
+    }
+    ss << std::endl;
+  }
+  // guardar laberinto con colores
+  ss << "Coste total del camino: " << camino_.size() - 1 << std::endl;
+
+  ss << "Nodos generados: " << nodos_generados << std::endl;
+  ss << "Nodos inspeccionados: " << nodos_inspeccionados << std::endl;
+
+  return ss;
+}

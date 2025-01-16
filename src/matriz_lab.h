@@ -3,6 +3,7 @@
 #include <set>
 #include <map>
 #include <utility>
+#include <sstream>
 
 // matriz que representa el laberinto con las paredes y emplea el algoritmo A*
 struct NodoComparador {
@@ -31,6 +32,7 @@ class MatrizLab {
     void guardar_camino();
     void imprimir_camino_en_mapa();
     void imprimir_lab_con_colores();
+    std::stringstream volcar_camino_en_documento();
   private:
     int filas_;
     int columnas_;
