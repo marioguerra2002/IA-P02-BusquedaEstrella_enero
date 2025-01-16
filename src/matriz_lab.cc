@@ -51,17 +51,17 @@ std::map<std::pair<int, int>, std::pair<int, int> > MatrizLab::get_padres() cons
 void MatrizLab::A_estrella() {
   Nodo nodo_inicial(x_inicio_, y_inicio_, x_meta_, y_meta_, 0);
   abiertos_.push(nodo_inicial);
-  g_scores_[std::make_pair(x_inicio_, y_inicio_)] = 0;
+  g_scores_[std::make_pair(x_inicio_, y_inicio_)] = 0; // Coste acumulado del nodo inicial
 
   while (!abiertos_.empty()) {
     Nodo nodo_actual = abiertos_.top();
     abiertos_.pop();
-    std::pair<int, int> pos_actual = std::make_pair(nodo_actual.get_x(), nodo_actual.get_y());
+    std::pair<int, int> pos_actual = std::make_pair(nodo_actual.get_x(), nodo_actual.get_y()); // Posición actual del nodo
     if (pos_actual.first == x_meta_ && pos_actual.second == y_meta_) {
       std::cout << "Nodo meta encontrado" << std::endl;
       return;
     }
-    cerrados_.insert(pos_actual);
+    cerrados_.insert(pos_actual); // Añado el nodo actual a cerrados
     explorar_vecinos(nodo_actual, abiertos_, cerrados_, padres_, g_scores_);
   }
 }
