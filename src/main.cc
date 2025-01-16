@@ -92,10 +92,14 @@ int main (int argc, char *argv[]) {
   matriz_lab.A_estrella();
   // std::cout << "Numero de padres: " << matriz_lab.get_padres().size() << std::endl;
   // imprimmir padres
-  matriz_lab.imprimir_padres();
+  // matriz_lab.imprimir_padres();
   // recorrer atras
   std::cout << "Recorrido atras" << std::endl;
   matriz_lab.imprimir_camino();
+  // imprimir camino en mapa
+  std::cout << "Camino en mapa" << std::endl;
+  matriz_lab.imprimir_camino_en_mapa();
+  matriz_lab.imprimir_lab_con_colores();
 
 
 
