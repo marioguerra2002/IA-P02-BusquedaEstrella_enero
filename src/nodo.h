@@ -16,14 +16,24 @@ class Nodo {
     void set_g(int g) { g_ = g; }
     void recalcule_f(int g) { f_ = g + h_; } // recalcular f con
     bool operator<(const Nodo& nodo) const { // ordenar por f
-      return f_ < nodo.f_;
+      if (f_ != nodo.f_) {
+        return f_ < nodo.f_;
+      }
+      if (x_ != nodo.x_) { // si f es igual, ordenar por x
+        return x_ < nodo.x_;
+      }
+      return y_ < nodo.y_; // si x es igual, ordenar por y
     }
+    
     void operator=(const Nodo& nodo) {
       x_ = nodo.x_;
       y_ = nodo.y_;
       h_ = nodo.h_;
       g_ = nodo.g_;
       f_ = nodo.f_;
+    }
+    bool operator==(const Nodo& nodo) const {
+      return x_ == nodo.x_ && y_ == nodo.y_;
     }
 
 

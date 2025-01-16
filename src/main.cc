@@ -90,7 +90,12 @@ int main (int argc, char *argv[]) {
 
   MatrizLab matriz_lab(matriz, filas, columnas, x_inicio, y_inicio, x_meta, y_meta);
   matriz_lab.A_estrella();
+  // std::cout << "Numero de padres: " << matriz_lab.get_padres().size() << std::endl;
+  // imprimmir padres
   matriz_lab.imprimir_padres();
+  // recorrer atras
+  std::cout << "Recorrido atras" << std::endl;
+  matriz_lab.imprimir_camino();
 
 
 

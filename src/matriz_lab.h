@@ -5,6 +5,11 @@
 #include <utility>
 
 // matriz que representa el laberinto con las paredes y emplea el algoritmo A*
+struct NodoComparador {
+    bool operator()(const Nodo& a, const Nodo& b) {
+      return a.get_f() > b.get_f(); // Cola de prioridad de menor a mayor f
+    }
+};
 
 class MatrizLab {
   public:
@@ -20,7 +25,10 @@ class MatrizLab {
     std::map<std::pair<int, int>, std::pair<int, int> > get_padres() const;
     void A_estrella();
     // función explorar vecinos que paso el nodo por referencia
-    void explorar_vecinos(Nodo&);
+    // void explorar_vecinos(Nodo&);
+    // void explorar_vecinos(Nodo&, std::priority_queue<Nodo, std::vector<Nodo>, NodoComparador>&, std::set<Nodo>&, std::map<std::pair<int, int>, std::pair<int, int> >&);
+    void explorar_vecinos(const Nodo&, std::priority_queue<Nodo, std::vector<Nodo>, NodoComparador>&, std::set<std::pair<int, int> >&, std::map<std::pair<int, int>, std::pair<int, int> >&, std::map<std::pair<int, int>, int>&);
+    void imprimir_camino(); // ir hacia atrás
     void imprimir_padres();
   private:
     int filas_;
@@ -29,9 +37,13 @@ class MatrizLab {
     int y_inicio_;
     int x_meta_;
     int y_meta_;
-    std::set<Nodo> abiertos_;
-    std::set<Nodo> cerrados_;
+    //std::set<Nodo> abiertos_;
+    std::priority_queue<Nodo, std::vector<Nodo>, NodoComparador> abiertos_;
+    //std::set<Nodo> cerrados_;
+    std::set<std::pair<int, int> > cerrados_;
     int** matriz_con_mapa_;
     // mapa que contendra de cada nodo, el nodo padre (coordenadas x, y)
     std::map<std::pair<int, int>, std::pair<int, int> > padres_; // el primer pair es el nodo, el segundo pair es el padre
+    std::map<std::pair<int, int>, int> g_scores_;
+
 };
