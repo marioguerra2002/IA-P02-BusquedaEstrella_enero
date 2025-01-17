@@ -3,7 +3,6 @@
 0 1 1 1 * 
 0 1 0 0 * 
 0 1 1 0 3 
-Laberinto con colores
 Coste total del camino: 27
 Nodos generados: 14
 Nodos inspeccionados: 14

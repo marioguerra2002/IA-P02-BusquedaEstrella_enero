@@ -141,8 +141,8 @@ int main (int argc, char *argv[]) {
     std::cout << std::endl;
   }
   //// vamos a crear el nodo inicial como prueba
-  Nodo nodo_inicial(x_inicio, y_inicio, x_meta, y_meta, 0);
-  std::cout << "nodo_inicial: " << nodo_inicial.get_x() << " " << nodo_inicial.get_y() << " " << nodo_inicial.get_g() << " " << nodo_inicial.get_h() << " " << nodo_inicial.get_f() << std::endl;
+  // Nodo nodo_inicial(x_inicio, y_inicio, x_meta, y_meta, 0);
+  // std::cout << "nodo_inicial: " << nodo_inicial.get_x() << " " << nodo_inicial.get_y() << " " << nodo_inicial.get_g() << " " << nodo_inicial.get_h() << " " << nodo_inicial.get_f() << std::endl;
 
   MatrizLab matriz_lab(matriz, filas, columnas, x_inicio, y_inicio, x_meta, y_meta);
   matriz_lab.A_estrella();

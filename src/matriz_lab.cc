@@ -76,7 +76,7 @@ void MatrizLab::A_estrella() {
 
 void MatrizLab::explorar_vecinos(const Nodo& nodo_actual, std::priority_queue<Nodo, std::vector<Nodo>, NodoComparador>& abiertos_, std::set<std::pair<int, int> >& cerrados_, std::map<std::pair<int, int>, std::pair<int, int> >& padres_, std::map<std::pair<int, int>, int>& g_scores_) {
   int costes[] = {5, 7};
-  for (int dx = -1; dx <= 1; ++dx) {
+  for (int dx = -1; dx <= 1; ++dx) { // Recorro los vecinos
     for (int dy = -1; dy <= 1; ++dy) {
       if (dx == 0 && dy == 0) continue; // No se puede ir a sí mismo como vecino
       int nx = nodo_actual.get_x() + dx; // Posición x del vecino 
